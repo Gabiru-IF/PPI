@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 01</title>
+</head>
+<body>
+    <h1>Exercício 01</h1>
+
+    <h2>Calculo do Volume de um Cilindro</h2>
+    <p>Formula: V = π * r² * h</p>
+    <input type="number" placeholder="Raio (r)" id="raio"><br>
+    <input type="number" placeholder="Altura (h)" id="altura"><br>
+    <button onclick="calcularVolume()">Calcular Volume</button><br>
+    <p id="resultado"></p>
+
+    <h2>Nota Necessária para Aprovação</h2>
+    <input type="number" placeholder="Média Parcial" id="nota1"><br>
+    <button onclick="calcularMedia()">Calcular Nota Necessária</button><br>
+    <p id="mediaResultado"></p>
+
+    <h2>Dias desde 01/01/2025 até a data:</h2>
+    <input type="date" id="dataInput"><br>
+    <button onclick="calcularDias()">Calcular Dias</button><br>
+    <p id="diasResultado"></p>
+
+    <h2>Informações de Aluno</h2>
+    <input type="text" placeholder="Nome" id="nome"><br>
+    <input type="text" placeholder="Curso" id="curso"><br>
+    <input type="text" placeholder="Matrícula" id="matricula"><br>
+    <input type="text" placeholder="IRA" id="ira"><br>
+    <button onclick="criarAluno()">Criar Json + Exibir Informações</button><br>
+    <p id="alunoResultado"></p>
+    
+    <script src="questao01.js"></script>
+    <script src="questao02.js"></script>
+    <script src="questao03.js"></script>
+    <script src="questao04.js"></script>
+</body>
+</html>
