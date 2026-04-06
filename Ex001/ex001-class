@@ -1,0 +1,30 @@
+//classe
+class class_carro {
+    nome : string;
+    ano : number;
+    preco : number;
+    foto : string;
+
+    constructor(nome : string, ano : number, preco : number, foto : string){
+        this.nome = nome;
+        this.ano = ano;
+        this.preco = preco;
+        this.foto = foto;
+    }
+
+    //Método
+    apresentar() {
+        console.log(
+        `
+            Carro : ${this.nome}
+            Ano : ${this.ano}
+            Preço : ${this.preco}
+            Foto : ${this.foto}
+        `
+        )
+    }
+}
+
+const Chevette = new class_carro('Chevette', 1987, 1440.00, 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcST2-H0nI1ZYsaNLoSNqes9ke05shTSxlToyW88GohxosJhngO1')
+
+Chevette.apresentar()

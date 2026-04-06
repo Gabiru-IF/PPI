@@ -1,0 +1,37 @@
+enum CursoV1 {
+    INFO, MECA, SUBREDES, SUBMECA, TSI
+}
+
+//ENUM: Relacionar um valor de constante ao texto daquela constante
+enum Curso {
+    INFO = "Informática Integrado", 
+    MECA = "Mecatrônica Integrado",
+    SUBREDES = "Subsequente de Redes",
+    SUBMECA = "Subsequente em Mecatrônica",
+    TSI = "Tecnólogo em Sistemas para Internet"
+}
+
+console.log(Curso.INFO)
+
+//Type
+type DisciplinasTécnicas = 'PPI' | 'PDS' | 'SOR'
+type Turno = 'MATUTINO' | 'VESPERTINO' | 'NOTURNO'
+
+//Interface: Estabelecer um contrato a ser implementador por uma classe
+//ou receber valores de uma aplicação externa e tipar esses valores de forma simples, sem necessidade de se criar uma classe
+
+interface Turma {
+    cod : number,
+    nome : string,
+    curso : Curso,
+    turno : Turno 
+}
+
+const ppi : Turma = {
+    cod : 20261,
+    nome : 'Programação para Internet',
+    curso : Curso.INFO,
+    turno : 'MATUTINO'
+
+}
+
