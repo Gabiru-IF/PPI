@@ -1,36 +1,36 @@
-interface Familia {
-    sobrenome : string,
-    num_filhos : number,
-    renda_média : number
-}
+// Pesquisa de famílias - Prefeitura de Parnamirim-RN
+const prompt = require('prompt-sync')()
 
-const familias : Familia[] = []
+let renda_familia: number
+let num_filhos: number
+let total_renda: number = 0
+let total_filhos: number = 0
+let quantidade_familias: number = 0
 
-for (let x = 0; x < 100; x++) {
-    const familia: Familia = {
-        sobrenome: `Familia_${x}`,
-        num_filhos: Math.floor(Math.random() * 4), // 0 a 3 filhos
-        renda_média: Math.floor(Math.random() * 18501) + 1500 // 1500 a 20000
-    };
-    
-    familias.push(familia);
-}
+// Ler dados das famílias
+do {
+    let entrada_renda = prompt("Digite a renda familiar (ou valor negativo para finalizar):")
+    renda_familia = Number(entrada_renda)
 
-let renda_média_familias = 0
-let qtd_filhos_familias = 0
-let total_renda = 0
+    if (renda_familia < 0) {
+        break
+    }
 
-for (const familia of familias) {
-    qtd_filhos_familias += familia.num_filhos
-}
+    let entrada_filhos = prompt("Digite o número de filhos:")
+    num_filhos = Number(entrada_filhos)
 
-for (const familia of familias) {
-    total_renda += familia.renda_média
-}
+    total_renda += renda_familia
+    total_filhos += num_filhos
+    quantidade_familias++
 
-renda_média_familias = total_renda / familias.length
+} while (true)
 
-// Resultados
-console.log('Total de famílias:', familias.length)
-console.log('Total de filhos:', qtd_filhos_familias)
-console.log('Renda média das famílias: R$', renda_média_familias.toFixed(2))
+// Calcular médias
+let media_renda = total_renda / quantidade_familias
+let media_filhos = total_filhos / quantidade_familias
+
+// Exibir resultados
+console.log("=== Resultados da Pesquisa ===")
+console.log(`Total de famílias: ${quantidade_familias}`)
+console.log(`Renda familiar média: R$ ${media_renda.toFixed(2)}`)
+console.log(`Média de filhos por família: ${media_filhos.toFixed(2)}`)
