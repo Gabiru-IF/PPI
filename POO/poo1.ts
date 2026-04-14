@@ -14,6 +14,9 @@ class Data {
     }
 
     obterDataFormatada() : string {
+        const dia = this.dia < 10 ? '0'+this.dia : ''+this.dia
+        const mes = this.mes < 10 ? '0'+this.mes : ''+this.mes
+
         return `${this.dia}/${this.mes}/${this.ano}`
     }
 }
