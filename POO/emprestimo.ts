@@ -49,4 +49,4 @@ class Exemplar {
 
 let Bruno = new Pessoa ('Bruno', '123.123.123-45')
 let livro01 = new Exemplar( 8582850018, 'Memórias Póstumas de Brás Cubas', 'Joaquim Maria Machado de Assis', 1881)
-let emp1 =  new Emprestimo(livro01, Bruno, )
+let emp1 =  new Emprestimo(livro01, Bruno)
