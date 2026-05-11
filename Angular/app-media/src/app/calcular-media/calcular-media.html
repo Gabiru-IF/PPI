@@ -1,0 +1,14 @@
+<h1>Calculador de Média</h1>
+<form class="form">
+    <label for="nota1">Digite a primeira nota: </label> <input #nota1 id="nota1" type="number"><br><br>
+    <label for="nota2">Digite a segunda nota: </label> <input #nota2 id="nota2" type="number"><br><br>
+
+    <label for="nota3">Digite a terceira nota: </label> <input #nota3 id="nota3" type="number"><br><br>
+    <label for="nota4">Digite a quarta nota: </label> <input #nota4 id="nota4" type="number"><br><br>
+
+    <button type="button" (click)="CalcularMedia(+nota1.value, +nota2.value, +nota3.value, +nota4.value)" id="botao">Calcular Média</button>
+</form>
+
+<div class="media">
+    <p>Sua média é {{media}}</p>
+</div>
