@@ -6,9 +6,29 @@
     <label for="nota3">Digite a terceira nota: </label> <input #nota3 id="nota3" type="number"><br><br>
     <label for="nota4">Digite a quarta nota: </label> <input #nota4 id="nota4" type="number"><br><br>
 
-    <button type="button" (click)="CalcularMedia(+nota1.value, +nota2.value, +nota3.value, +nota4.value)" id="botao">Calcular Média</button>
+    <button type="button" (click)="CalcularMediaParcial(+nota1.value, +nota2.value, +nota3.value, +nota4.value)" id="botao">Calcular Média</button>
 </form>
 
-<div class="media">
-    <p>Sua média é {{media}}</p>
+<form class="form">
+    <form class="form" *ngIf="mediaParcial !== undefined && mediaParcial < 6">
+        <label for="notaExame">Digite a nota do exame: </label> <input #notaExame id="notaExame" type="number"><br><br>
+        <button type="button" (click)="calcularMediaFinal(+notaExame.value)" id="botao">Calcular Média Final</button>
+    </form>
+</form>
+
+<div class="mediaParcial">
+    <p>Média Parcial: {{mediaParcial}}</p>
 </div>
+
+<div class="mediaFinal">
+    <p>Média Final: {{mediaFinal}}</p>
+</div>
+
+<div class="situacao">
+    <p>
+        Situação:
+        <span [ngClass]="{'aprovado': situacao === 'Aprovado', 'reprovado': situacao === 'Reprovado'}">{{situacao}}</span>
+    </p>
+</div>
+
+<button type="button" (click)="limparCampos()" id="botao">Limpar Campos</button>
