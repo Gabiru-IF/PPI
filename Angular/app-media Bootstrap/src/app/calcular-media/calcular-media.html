@@ -1,0 +1,109 @@
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-7">
+            <div class="card shadow-sm border-0 app-card">
+                <div class="card-body p-4 p-md-5">
+                    <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-4">
+                        <div>
+                            <h1 class="h3 mb-1">Calculador de Média</h1>
+                            <p class="text-body-secondary mb-0">Use os campos abaixo para calcular a média e a situação do aluno.</p>
+                        </div>
+                    </div>
+
+                    <form class="row g-3">
+                        <div class="col-12 col-md-6">
+                            <label for="nota1" class="form-label">Primeira nota</label>
+                            <input #nota1 type="number" class="form-control" id="nota1" placeholder="Ex.: 8.5">
+                        </div>
+
+                        <div class="col-12 col-md-6">
+                            <label for="nota2" class="form-label">Segunda nota</label>
+                            <input #nota2 type="number" class="form-control" id="nota2" placeholder="Ex.: 7.0">
+                        </div>
+
+                        <div class="col-12 col-md-6">
+                            <label for="nota3" class="form-label">Terceira nota</label>
+                            <input #nota3 type="number" class="form-control" id="nota3" placeholder="Ex.: 6.5">
+                        </div>
+
+                        <div class="col-12 col-md-6">
+                            <label for="nota4" class="form-label">Quarta nota</label>
+                            <input #nota4 type="number" class="form-control" id="nota4" placeholder="Ex.: 9.0">
+                        </div>
+
+                        <div class="col-12 d-grid d-md-flex gap-2 pt-2">
+                            <button type="button" (click)="CalcularMediaParcial(+nota1.value, +nota2.value, +nota3.value, +nota4.value)" class="btn btn-primary flex-grow-1">
+                                Calcular média parcial
+                            </button>
+                            <button type="button" (click)="limparCampos()" class="btn btn-outline-danger">
+                                Limpar campos
+                            </button>
+                        </div>
+                    </form>
+
+                    <div class="mt-4" *ngIf="mediaParcial !== undefined">
+                        <div class="alert mb-0" [ngClass]="mediaParcial >= 6 ? 'alert-success' : 'alert-warning'">
+                            <strong>Média parcial:</strong> {{ mediaParcial | number:'1.1-2' }}
+                        </div>
+                    </div>
+
+                    <div class="mt-4" *ngIf="mediaParcial !== undefined && mediaParcial < 6">
+                        <div class="alert alert-warning mb-0">
+                            <p class="mb-3">A média parcial ficou abaixo de 6. Informe a nota do exame para continuar.</p>
+                            <div class="row g-3 align-items-end">
+                                <div class="col-12 col-md-8">
+                                    <label for="notaExame" class="form-label">Nota do exame</label>
+                                    <input #notaExame type="number" class="form-control" id="notaExame" placeholder="Ex.: 7.5">
+                                </div>
+
+                                <div class="col-12 col-md-4 d-grid">
+                                    <button type="button" (click)="calcularMediaFinal(+notaExame.value)" class="btn btn-warning">
+                                        Calcular final
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row g-3 mt-4">
+                        <div class="col-12 col-md-4">
+                            <div class="card border-0 bg-body-tertiary h-100">
+                                <div class="card-body">
+                                    <span class="text-uppercase text-body-secondary small">Média final</span>
+                                    <p class="h2 mb-0">{{ mediaFinal ?? '-' }}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-4">
+                            <div class="card border-0 bg-body-tertiary h-100">
+                                <div class="card-body">
+                                    <span class="text-uppercase text-body-secondary small">Situação</span>
+                                    <div class="mt-2">
+                                        <span class="badge fs-6 px-3 py-2"
+                                              [ngClass]="{
+                                                'text-bg-success': situacao === 'Aprovado',
+                                                'text-bg-danger': situacao === 'Reprovado',
+                                                'text-bg-secondary': !situacao
+                                              }">
+                                            {{ situacao || 'Aguardando cálculo' }}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-4">
+                            <div class="card border-0 bg-body-tertiary h-100">
+                                <div class="card-body">
+                                    <span class="text-uppercase text-body-secondary small">Média parcial</span>
+                                    <p class="h2 mb-0">{{ mediaParcial ?? '-' }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
