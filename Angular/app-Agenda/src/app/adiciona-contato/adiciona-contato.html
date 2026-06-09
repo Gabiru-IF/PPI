@@ -1,0 +1,159 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <h1 class="mb-4 text-center">Agenda de Contatos</h1>
+
+      <!-- Formulário -->
+      <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+          <h5 class="mb-0">Adicionar Novo Contato</h5>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="formulario" (ngSubmit)="adicionarContato()">
+            <!-- Nome -->
+            <div class="mb-3">
+              <label for="nome" class="form-label">Nome</label>
+              <input
+                type="text"
+                class="form-control"
+                [class.is-invalid]="nome?.invalid && nome?.touched"
+                id="nome"
+                formControlName="nome"
+                placeholder="Digite o nome"
+              />
+              <div class="invalid-feedback" *ngIf="nome?.invalid && nome?.touched">
+                <span *ngIf="nome?.errors?.['required']">Nome é obrigatório</span>
+                <span *ngIf="nome?.errors?.['minlength']">Mínimo 3 caracteres</span>
+              </div>
+            </div>
+
+            <!-- Telefone -->
+            <div class="mb-3">
+              <label for="telefone" class="form-label">Telefone</label>
+              <input
+                type="text"
+                class="form-control"
+                [class.is-invalid]="telefone?.invalid && telefone?.touched"
+                id="telefone"
+                formControlName="telefone"
+                placeholder="Digite o telefone (10-11 dígitos)"
+              />
+              <div class="invalid-feedback" *ngIf="telefone?.invalid && telefone?.touched">
+                <span *ngIf="telefone?.errors?.['required']">Telefone é obrigatório</span>
+                <span *ngIf="telefone?.errors?.['pattern']">Telefone deve ter 10-11 dígitos</span>
+              </div>
+            </div>
+
+            <!-- Email -->
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                [class.is-invalid]="email?.invalid && email?.touched"
+                id="email"
+                formControlName="email"
+                placeholder="Digite o email"
+              />
+              <div class="invalid-feedback" *ngIf="email?.invalid && email?.touched">
+                <span *ngIf="email?.errors?.['required']">Email é obrigatório</span>
+                <span *ngIf="email?.errors?.['email']">Email inválido</span>
+              </div>
+            </div>
+
+            <!-- Aniversário -->
+            <div class="mb-3">
+              <label for="aniversario" class="form-label">Aniversário</label>
+              <input
+                type="date"
+                class="form-control"
+                [class.is-invalid]="aniversario?.invalid && aniversario?.touched"
+                id="aniversario"
+                formControlName="aniversario"
+              />
+              <div class="invalid-feedback" *ngIf="aniversario?.invalid && aniversario?.touched">
+                <span>Aniversário é obrigatório</span>
+              </div>
+            </div>
+
+            <!-- Tipo de Contato -->
+            <div class="mb-3">
+              <label for="tipo" class="form-label">Tipo de Contato</label>
+              <select
+                class="form-select"
+                id="tipo"
+                formControlName="tipo"
+              >
+                <option *ngFor="let t of tiposContato" [value]="t">
+                  {{ t | uppercase }}
+                </option>
+              </select>
+            </div>
+
+            <!-- Botão Adicionar -->
+            <button
+              type="submit"
+              class="btn btn-success w-100"
+              [disabled]="formulario.invalid"
+            >
+              Adicionar Contato
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Tabela de Contatos -->
+      <div class="card">
+        <div class="card-header bg-secondary text-white">
+          <h5 class="mb-0">Contatos Cadastrados ({{ contatos.length }})</h5>
+        </div>
+        <div class="card-body">
+          <div *ngIf="contatos.length === 0; else tabelaContatos" class="alert alert-info">
+            Nenhum contato cadastrado. Adicione um contato no formulário acima!
+          </div>
+
+          <ng-template #tabelaContatos>
+            <div class="contatos-list">
+              <div *ngFor="let contato of contatos; let i = index" class="contato-card">
+                <div class="contato-info">
+                  <div class="info-row">
+                    <strong>Nome:</strong>
+                    <span>{{ contato.getNome() }}</span>
+                  </div>
+                  <div class="info-row">
+                    <strong>Telefone:</strong>
+                    <span>{{ contato.getTelefone() }}</span>
+                  </div>
+                  <div class="info-row">
+                    <strong>Email:</strong>
+                    <span class="email">{{ contato.getEmail() }}</span>
+                  </div>
+                  <div class="info-row">
+                    <strong>Aniversário:</strong>
+                    <span>{{ contato.getAniversario() }}</span>
+                  </div>
+                  <div class="info-row">
+                    <strong>Tipo:</strong>
+                    <span>
+                      <span class="badge bg-info text-dark">
+                        {{ contato.getTipo() | uppercase }}
+                      </span>
+                    </span>
+                  </div>
+                </div>
+                <div class="contato-action">
+                  <button
+                    class="btn btn-danger btn-sm w-100"
+                    (click)="removerContato(i)"
+                  >
+                    Remover
+                  </button>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
