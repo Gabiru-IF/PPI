@@ -1,0 +1,58 @@
+.consulta-container {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 1.5rem;
+    font-family: Arial, sans-serif;
+}
+
+.busca-form {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.busca-form input {
+    flex: 1;
+    padding: 0.6rem 0.75rem;
+}
+
+.busca-form button {
+    padding: 0.6rem 1rem;
+    cursor: pointer;
+}
+
+.mensagem {
+    margin: 0.5rem 0 1rem;
+}
+
+.lista-filmes {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1rem;
+}
+
+.filme-card {
+    border: 1px solid #d8d8d8;
+    border-radius: 8px;
+    padding: 0.75rem;
+    text-align: center;
+}
+
+.poster {
+    width: 100%;
+    max-width: 170px;
+    height: auto;
+    border-radius: 4px;
+}
+
+.poster-sem-imagem {
+    width: 100%;
+    max-width: 170px;
+    aspect-ratio: 2 / 3;
+    margin: 0 auto;
+    display: grid;
+    place-items: center;
+    background-color: #efefef;
+    color: #666;
+    border-radius: 4px;
+}
