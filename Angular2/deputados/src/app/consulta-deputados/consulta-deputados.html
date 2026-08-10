@@ -1,0 +1,9 @@
+<h1>Consulta de Deputados</h1>
+@for (dep of deputados(); track dep.id){
+  <div class="deputado">
+    <h2>{{dep.nome}}</h2>
+    <p><img [src]="dep.urlFoto" [alt]="dep.nome"></p>
+    <p>Partido: {{dep.siglaPartido}}</p>
+    <p>UF: {{dep.siglaUf}}</p>
+  </div>
+}
