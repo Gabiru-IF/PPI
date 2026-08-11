@@ -1,0 +1,48 @@
+.titulo {
+    text-align: center;
+}
+
+.deputados {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    align-items: start;
+    padding: 16px;
+}
+
+.card-deputado {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-deputado img {
+    width: 100%;
+    max-width: 160px;
+    height: auto;
+    margin: 0 auto 8px;
+    display: block;
+}
+
+.filtro {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.filtro input {
+    min-width: 240px;
+    padding: 8px 10px;
+}
+
+.filtro button {
+    padding: 8px 14px;
+    border: 0;
+    color: #000000;
+    cursor: pointer;
+}

@@ -1,7 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { DeputadoService } from '../deputado-service';
 import { Deputado } from '../deputado';
-import { DeputadoResponse } from '../deputado';
 
 @Component({
   selector: 'app-consulta-deputados',
@@ -12,7 +11,7 @@ import { DeputadoResponse } from '../deputado';
 export class ConsultaDeputados {
 
   readonly #deputadoService = inject(DeputadoService);
-  protected deputados = signal<Deputado[] | undefined>(undefined);
+  protected deputados = signal<Deputado[]>([]);
 
   constructor() {
   
@@ -20,5 +19,17 @@ export class ConsultaDeputados {
       this.deputados.set(res.dados);
     
     });
+  }
+
+  filtrarDeputados(nome: string) {
+    if (nome.trim() === '') {
+      this.#deputadoService.obterTodos().subscribe(res => {
+        this.deputados.set(res.dados);
+      });
+    } else {
+      this.#deputadoService.obterDeputadoPorNome(nome).subscribe(res => {
+        this.deputados.set(res.dados);
+      });
+    }
   }
 }

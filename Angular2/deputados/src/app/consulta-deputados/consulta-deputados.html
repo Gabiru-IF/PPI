@@ -1,9 +1,23 @@
-<h1>Consulta de Deputados</h1>
-@for (dep of deputados(); track dep.id){
-  <div class="deputado">
-    <h2>{{dep.nome}}</h2>
-    <p><img [src]="dep.urlFoto" [alt]="dep.nome"></p>
-    <p>Partido: {{dep.siglaPartido}}</p>
-    <p>UF: {{dep.siglaUf}}</p>
-  </div>
-}
+<h1 class="titulo">Consulta de Deputados</h1>
+
+<form class="filtro" (submit)="$event.preventDefault(); filtrarDeputados(nomePesquisa.value)">
+  <label for="nome">Filtrar por Nome:</label>
+  <input
+    #nomePesquisa
+    type="text"
+    id="nome"
+    placeholder="Digite o nome do deputado"
+  />
+  <button type="submit">Confirmar</button>
+</form>
+
+<div class="deputados">
+  @for (dep of deputados(); track dep.id) {
+    <div class="card-deputado">
+      <h2>{{ dep.nome }}</h2>
+      <img [src]="dep.urlFoto" [alt]="dep.nome" />
+      <p>Partido: {{ dep.siglaPartido }}</p>
+      <p>UF: {{ dep.siglaUf }}</p>
+    </div>
+  }
+</div>
