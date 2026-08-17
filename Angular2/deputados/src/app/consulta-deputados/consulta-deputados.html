@@ -1,17 +1,16 @@
 <h1 class="titulo">Consulta de Deputados</h1>
 
 <form class="filtro" [formGroup]="filtroForm" (ngSubmit)="filtrarDeputados()">
-  <label for="nome">Filtrar por Nome:</label>
+  <label for="nome">Filtrar por Nome, UF ou Partido:</label>
   <input
     type="text"
     id="nome"
     formControlName="nome"
-    placeholder="Digite o nome do deputado"
+    placeholder="Digite nome, UF ou partido"
   />
 
   <button type="submit">Confirmar</button>
 </form>
-
 <div class="deputados">
   @for (dep of deputados(); track dep.id) {
     <div class="card-deputado">

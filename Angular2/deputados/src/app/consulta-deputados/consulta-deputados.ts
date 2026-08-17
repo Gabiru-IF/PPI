@@ -28,9 +28,9 @@ export class ConsultaDeputados {
   }
 
   filtrarDeputados() {
-    const nome = this.filtroForm.get('nome')?.value?.trim() ?? '';
+    const termo = this.filtroForm.get('nome')?.value?.trim() ?? '';
 
-    if (nome === '') {
+    if (termo === '') {
       this.#deputadoService.obterTodos().subscribe(res => {
         this.deputados.set(res.dados);
       });
@@ -44,8 +44,18 @@ export class ConsultaDeputados {
       return;
     }
 
-    this.#deputadoService.obterDeputadoPorNome(nome).subscribe(res => {
-      this.deputados.set(res.dados);
+    this.#deputadoService.obterTodos().subscribe(res => {
+      const filtro = termo.toLowerCase();
+
+      this.deputados.set(
+        res.dados.filter(dep => {
+          const nome = dep.nome?.toLowerCase() ?? '';
+          const partido = dep.siglaPartido?.toLowerCase() ?? '';
+          const uf = dep.siglaUf?.toLowerCase() ?? '';
+
+          return nome.includes(filtro) || partido.includes(filtro) || uf.includes(filtro);
+        })
+      );
     });
   }
 }
