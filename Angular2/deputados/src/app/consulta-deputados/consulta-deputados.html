@@ -1,13 +1,14 @@
 <h1 class="titulo">Consulta de Deputados</h1>
 
-<form class="filtro" (submit)="$event.preventDefault(); filtrarDeputados(nomePesquisa.value)">
+<form class="filtro" [formGroup]="filtroForm" (ngSubmit)="filtrarDeputados()">
   <label for="nome">Filtrar por Nome:</label>
   <input
-    #nomePesquisa
     type="text"
     id="nome"
+    formControlName="nome"
     placeholder="Digite o nome do deputado"
   />
+
   <button type="submit">Confirmar</button>
 </form>
 
