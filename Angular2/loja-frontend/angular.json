@@ -6,7 +6,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "Loja": {
+    "loja-frontend": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -61,10 +61,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "Loja:build:production"
+              "buildTarget": "loja-frontend:build:production"
             },
             "development": {
-              "buildTarget": "Loja:build:development"
+              "buildTarget": "loja-frontend:build:development"
             }
           },
           "defaultConfiguration": "development"
