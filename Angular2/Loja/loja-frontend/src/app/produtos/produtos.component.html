@@ -1,0 +1,25 @@
+<main class="page">
+  <h1>Produtos</h1>
+
+  @if (carregando()) {
+    <p>Carregando produtos...</p>
+  } @else if (erro()) {
+    <p class="erro">{{ erro() }}</p>
+  } @else {
+    <div class="lista">
+      @for (produto of produtos(); track produto.id) {
+        <section class="item">
+          <img [src]="produto.foto" [alt]="produto.nome" />
+
+          <div class="conteudo">
+            <h2>{{ produto.nome }}</h2>
+            <p><strong>Marca:</strong> {{ produto.marca }}</p>
+            <p>{{ produto.descricao }}</p>
+            <p><strong>Preço:</strong> {{ formatarPreco(produto.preco) }}</p>
+            <p><strong>Quantidade:</strong> {{ produto.quantidade }}</p>
+          </div>
+        </section>
+      }
+    </div>
+  }
+</main>
