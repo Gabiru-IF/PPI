@@ -2,15 +2,18 @@ import { Component, OnInit, inject, signal } from '@angular/core';
 
 import { Produto } from '../models/produto';
 import { ProdutoService } from '../produto.service';
+import { CarrinhoService } from '../carrinho-service.service';
 
 @Component({
   selector: 'app-produtos',
   standalone: true,
   templateUrl: './produtos.component.html',
-  styleUrl: './produtos.component.scss'
+  styleUrl: './produtos.component.scss',
+  imports: []
 })
 export class ProdutosComponent implements OnInit {
   private readonly produtoService = inject(ProdutoService);
+  private readonly carrinho = inject(CarrinhoService);
 
   protected readonly produtos = signal<Produto[]>([]);
   protected readonly carregando = signal(true);
@@ -34,5 +37,13 @@ export class ProdutosComponent implements OnInit {
       style: 'currency',
       currency: 'BRL'
     }).format(preco);
+  }
+
+  protected adicionarAoCarrinho(produto: Produto): void {
+    this.carrinho.adicionarItem({
+      id: produto.id,
+      produto,
+      quantidade: 1
+    });
   }
 }

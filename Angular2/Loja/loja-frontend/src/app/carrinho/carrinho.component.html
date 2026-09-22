@@ -1,0 +1,72 @@
+<section class="carrinho-page">
+  <div class="hero">
+    <div>
+      <p class="eyebrow">Seu carrinho</p>
+      <h2>Confira, ajuste e finalize o que você quer levar.</h2>
+      <p class="subtitulo">
+        Visualização rápida dos itens, com controles de quantidade no estilo das grandes lojas.
+      </p>
+    </div>
+
+    <a class="voltar" routerLink="/produtos">Continuar comprando</a>
+  </div>
+
+  @if (itens().length === 0) {
+    <div class="estado-vazio">
+      <h3>Seu carrinho está vazio</h3>
+      <p>Adicione produtos para ver a lista aqui.</p>
+      <a routerLink="/produtos">Ir para produtos</a>
+    </div>
+  } @else {
+    <div class="layout">
+      <div class="lista">
+        @for (item of itens(); track item.id) {
+          <article class="item">
+            <img [src]="item.produto.foto" [alt]="item.produto.nome" />
+
+            <div class="conteudo">
+              <div class="linha-superior">
+                <div>
+                  <h3>{{ item.produto.nome }}</h3>
+                  <p class="marca">{{ item.produto.marca }}</p>
+                </div>
+                <strong>{{ formatarPreco(item.produto.preco) }}</strong>
+              </div>
+
+              <p class="descricao">{{ item.produto.descricao }}</p>
+
+              <div class="acoes">
+                <div class="quantidade">
+                  <button type="button" (click)="diminuir(item.produto.id)">-</button>
+                  <span>{{ item.quantidade }}</span>
+                  <button type="button" (click)="aumentar(item.produto.id)">+</button>
+                </div>
+
+                <button type="button" class="remover" (click)="remover(item.produto.id)">
+                  Remover
+                </button>
+              </div>
+
+              <p class="subtotal">
+                Subtotal: {{ formatarPreco(item.produto.preco * item.quantidade) }}
+              </p>
+            </div>
+          </article>
+        }
+      </div>
+
+      <aside class="resumo">
+        <h3>Resumo do pedido</h3>
+        <div class="resumo-linha">
+          <span>Itens</span>
+          <strong>{{ quantidadeTotal() }}</strong>
+        </div>
+        <div class="resumo-linha total">
+          <span>Total</span>
+          <strong>{{ formatarPreco(total()) }}</strong>
+        </div>
+        <button type="button">Finalizar compra</button>
+      </aside>
+    </div>
+  }
+</section>

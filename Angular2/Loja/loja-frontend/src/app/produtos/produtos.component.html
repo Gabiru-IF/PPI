@@ -17,6 +17,7 @@
             <p>{{ produto.descricao }}</p>
             <p><strong>Preço:</strong> {{ formatarPreco(produto.preco) }}</p>
             <p><strong>Quantidade:</strong> {{ produto.quantidade }}</p>
+            <button class="button" (click)="adicionarAoCarrinho(produto)">Adicionar ao carrinho</button>
           </div>
         </section>
       }
