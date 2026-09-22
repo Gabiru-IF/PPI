@@ -23,4 +23,36 @@
       }
     </div>
   }
+
+  @if (produtoSelecionado()) {
+    <section class="painel-quantidade">
+      <div class="painel-cabecalho">
+        <h2>{{ produtoSelecionado()?.nome }}</h2>
+        <button type="button" class="fechar" (click)="fecharPainelQuantidade()">x</button>
+      </div>
+
+      <p class="estoque">Disponível: {{ quantidadeDisponivel(produtoSelecionado()!) }}</p>
+
+      <div class="controle-quantidade">
+        <button type="button" (click)="diminuirQuantidadeSelecionada()">-</button>
+        <input
+          type="number"
+          min="1"
+          [max]="quantidadeMaximaSelecionada()"
+          [value]="quantidadeSelecionada()"
+          (input)="aoDigitarQuantidade($event)"
+        />
+        <button type="button" (click)="aumentarQuantidadeSelecionada()">+</button>
+      </div>
+
+      @if (mensagemQuantidade()) {
+        <p class="erro-painel">{{ mensagemQuantidade() }}</p>
+      }
+
+      <div class="acoes-painel">
+        <button type="button" class="botao-simples" (click)="confirmarAdicao()">Adicionar</button>
+        <button type="button" class="botao-simples" (click)="fecharPainelQuantidade()">Cancelar</button>
+      </div>
+    </section>
+  }
 </main>

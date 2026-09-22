@@ -66,6 +66,90 @@ h1 {
   cursor: pointer;
 }
 
+.painel-quantidade {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: min(320px, calc(100vw - 40px));
+  padding: 16px;
+  border: 1px solid #d9d9d9;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.painel-cabecalho {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.painel-cabecalho h2 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.fechar {
+  border: 0;
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
+  padding: 0;
+}
+
+.estoque {
+  margin: 0 0 12px;
+  color: #555;
+}
+
+.controle-quantidade {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.controle-quantidade button,
+.botao-simples {
+  border: 1px solid #d9d9d9;
+  background: #f3f4f6;
+  color: #222;
+  font: inherit;
+  border-radius: 6px;
+}
+
+.controle-quantidade button {
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+}
+
+.controle-quantidade input {
+  width: 100%;
+  height: 36px;
+  border: 1px solid #d9d9d9;
+  border-radius: 6px;
+  padding: 0 10px;
+  font: inherit;
+}
+
+.erro-painel {
+  margin: 10px 0 0;
+  color: #b00020;
+}
+
+.acoes-painel {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.botao-simples {
+  padding: 10px 12px;
+  cursor: pointer;
+}
+
 
 @media (max-width: 640px) {
   .page {
@@ -74,5 +158,12 @@ h1 {
 
   .item {
     grid-template-columns: 1fr;
+  }
+
+  .painel-quantidade {
+    right: 16px;
+    left: 16px;
+    width: auto;
+    bottom: 16px;
   }
 }
